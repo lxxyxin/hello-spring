@@ -18,7 +18,7 @@ public class MemoryMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findById(Long id) {
-        return Optional.ofNullable(store.get(id));
+        return Optional.ofNullable(store.get(id)); //null일 가능성이 있어 ofNullable 사용
     }
 
     @Override
@@ -26,6 +26,7 @@ public class MemoryMemberRepository implements MemberRepository{
         return store.values().stream()
                 .filter(member -> member.getName().equals(name))
                 .findAny();
+        //name과 같은 것이 어느 것이라도 있으면 반환
     }
 
     @Override
